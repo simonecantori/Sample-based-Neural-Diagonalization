@@ -34,7 +34,7 @@ class AutoregressiveTransformer(nn.Module):
 
         self.embedding = nn.Embedding(vocab_size, d_model)
         self.angle_encoder = nn.Linear(N, d_model)
-        self.pos_encoder = PositionalEncoding(d_model, dropout, max_len=max_seq_length)
+        self.pos_encoder = PositionalEncoding(d_model, dropout, max_len=max_seq_length+1)
         encoder_layer = nn.TransformerEncoderLayer(d_model, nhead, dropout=dropout)
         self.transformer_encoder = nn.TransformerEncoder(encoder_layer, num_layers)
         self.fc_out = nn.Linear(d_model, 2)
